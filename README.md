@@ -1,1 +1,2 @@
 # kredvise
+Kredvise Bank is a borderless e-banking platform serving 150+ countries with multi-currency and crypto accounts, bank-grade security, and 24/7 support. Our intuitive service powers fast global transfers and transparent fees
