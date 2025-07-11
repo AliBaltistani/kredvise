@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect all requests to core/public directory
+    RewriteCond %{REQUEST_URI} !^/core/public/
+    RewriteRule ^(.*)$ core/public/$1 [L,QSA]
+
+    # Ensure assets are properly accessed
+    RewriteCond %{REQUEST_URI} ^/assets/
+    RewriteRule ^assets/(.*)$ core/public/assets/$1 [L]
+
+    <Files .env>
+        Require all denieda
+    </Files>
+</IfModule>

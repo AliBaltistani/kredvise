@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Ensure assets are properly accessed 
+    RewriteCond %{REQUEST_URI} ^/assets/
+    RewriteRule ^assets/(.*)$ assets/$1 [L]
+
+    # Handle Direct Access
+    RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Route all other requests to index.php
+    RewriteRule ^ index.php [L]
+</IfModule>
